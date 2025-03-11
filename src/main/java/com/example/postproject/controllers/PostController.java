@@ -18,19 +18,19 @@ public class PostController {
         this.postService = postService;
     }
 
-    // Создание пользователя
+    
     @PostMapping("/create")
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         return ResponseEntity.ok(postService.createPost(post));
     }
 
-    // Получение всех пользователей
+    
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         return ResponseEntity.ok(postService.getAllPosts());
     }
 
-    // Получение пользователя по ID
+    
     @GetMapping("/{id}")
     public ResponseEntity<Post> getPostById(@PathVariable Long id) {
         Optional<Post> user = postService.getPostById(id);
@@ -38,13 +38,13 @@ public class PostController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Обновление пользователя
+    
     @PutMapping("/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post postDetails) {
         return ResponseEntity.ok(postService.updatePost(id, postDetails));
     }
 
-    // Удаление пользователя
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.deletePost(id);
